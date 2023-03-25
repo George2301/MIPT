@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="Emp_Data" id="Project-725" database="Sqlite" >
+	<schema name="INSTANCE" catalogname="Emp_Data" >
+		<table name="Employee" >
+			<column name="ID" type="INTEGER" jt="4" mandatory="y" />
+			<column name="Employee" type="VARCHAR" length="100" jt="12" mandatory="y" />
+			<column name="Supervisor" type="VARCHAR" length="100" jt="12" mandatory="y" />
+			<column name="travel_required" type="VARCHAR" length="5" jt="12" mandatory="y" />
+			<column name="Project" type="VARCHAR" length="100" jt="12" mandatory="y" />
+			<column name="Position" type="VARCHAR" length="100" jt="12" mandatory="y" />
+			<index name="pk_Employee" unique="PRIMARY_KEY" >
+				<column name="ID" />
+			</index>
+			<index name="unq_Project" unique="UNIQUE_INDEX" >
+				<column name="Project" />
+			</index>
+			<fk name="fk_Employee_Project" virtual="y" to_schema="Emp_Data.INSTANCE" to_table="Project" >
+				<fk_column name="Project" pk="Project" />
+			</fk>
+		</table>
+		<table name="Project" >
+			<column name="Project" type="VARCHAR" length="100" jt="12" mandatory="y" />
+			<column name="Department" type="VARCHAR" length="100" jt="12" mandatory="y" />
+			<index name="pk_Project" unique="PRIMARY_KEY" >
+				<column name="Project" />
+			</index>
+		</table>
+	</schema>
+	<layout name="Default Layout" id="Layout-d44" confirmed="y" show_relation="columns" >
+		<entity schema="Emp_Data.INSTANCE" name="Employee" color="C1D8EE" x="48" y="48" />
+		<entity schema="Emp_Data.INSTANCE" name="Project" color="C1D8EE" x="288" y="48" />
+	</layout>
+</project>
